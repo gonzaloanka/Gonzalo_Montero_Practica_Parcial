@@ -1,23 +1,21 @@
 const express = require('express');
+const cors = require('cors');
 const dotenv = require('dotenv');
 const connectDB = require('./config/mongo');
-const routes = require('./routes/index'); // Importamos las rutas
 
-dotenv.config(); // Cargar las variables de entorno desde .env
-
+dotenv.config();
 const app = express();
 
-// Conectar a la base de datos MongoDB
-connectDB();
-
-// Middleware para analizar el cuerpo de las solicitudes
+// Middlewares
+app.use(cors());
 app.use(express.json());
 
-// Usar las rutas definidas en routes/index.js
-app.use('/', routes);
+// Rutas
+app.use('/api/user', require('./routes/user.routes'));
 
-const port = process.env.PORT || 3000;
-
-app.listen(port, () => {
-  console.log(`Servidor escuchando en http://localhost:${port}`);
+// Conexión DB y arranque
+connectDB();
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`Servidor corriendo en puerto ${PORT}`);
 });
