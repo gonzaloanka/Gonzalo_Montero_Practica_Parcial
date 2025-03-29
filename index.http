@@ -2,6 +2,15 @@ POST http://localhost:3000/api/user/register
 Content-Type: application/json
 
 {
-  "email": "gonzal@mail.com",
+  "email": "gonzalooo@mail.com",
   "password": "12345678"
+}
+
+### Validar email (Paso 2)
+PUT http://localhost:3000/api/user/validate
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3ZTdmNGIyMTUxNTQ3OTYzNjgyNWM1ZiIsImlhdCI6MTc0MzI1NDcwNiwiZXhwIjoxNzQzMjU4MzA2fQ.rYVfi4D1piZ0lo2f8Ngq_M7gh6LgGaGCM3xXiTZbYAk
+Content-Type: application/json
+
+{
+  "code": "493013"
 }

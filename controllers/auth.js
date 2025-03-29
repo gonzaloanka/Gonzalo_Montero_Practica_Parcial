@@ -1,4 +1,4 @@
-const User = require('../models/user');
+const User = require('../models/User');
 const jwt = require('jsonwebtoken');
 const { generateCode } = require('../utils/generateCode');
 const { hashPassword } = require('../utils/hashPassword');
@@ -33,5 +33,31 @@ exports.register = async (req, res) => {
 
   } catch (err) {
     res.status(500).json({ error: err.message });
+  }
+};
+
+exports.validateEmail = async (req, res) => {
+  const { code } = req.body;
+  const user = req.user;
+
+  if (user.status === 'validated') {
+    return res.status(400).json({ message: 'El email ya ha sido validado' });
+  }
+
+  if (user.code === code) {
+    user.status = 'validated';
+    user.code = null;
+    user.maxAttempts = 0;
+    await user.save();
+    return res.status(200).json({ message: 'Email validado correctamente' });
+  } else {
+    user.maxAttempts -= 1;
+    await user.save();
+
+    if (user.maxAttempts <= 0) {
+      return res.status(403).json({ message: 'Demasiados intentos fallidos' });
+    }
+
+    return res.status(400).json({ message: 'Código incorrecto' });
   }
 };
