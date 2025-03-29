@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const UserSchema = new mongoose.Schema({
-  email: { type: String, required: true, unique: true },
+  email: { type: String, required: true },
   password: { type: String, required: true },
   status: { type: String, enum: ['pending', 'validated'], default: 'pending' },
   role: { type: String, default: 'user' },
@@ -22,4 +22,5 @@ const UserSchema = new mongoose.Schema({
   deleted: { type: Boolean, default: false }
 });
 
-module.exports = mongoose.model('User', UserSchema);
+module.exports = mongoose.models.User || mongoose.model('User', UserSchema);
+
