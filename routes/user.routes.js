@@ -5,6 +5,8 @@ const { registerValidator, validateEmailCodeValidator } = require('../validators
 const authMiddleware = require('../middleware/authMiddleware');
 const { validationResult } = require('express-validator');
 const { loginValidator } = require('../validators/authValidator');
+const { updatePersonalData } = require('../controllers/auth');
+const { personalDataValidator } = require('../validators/authValidator');
 
 
 router.post('/register', registerValidator, (req, res, next) => {
@@ -35,4 +37,15 @@ router.post('/login',
     next();
   },
   login
+);
+
+router.put('/register',
+  authMiddleware,
+  personalDataValidator,
+  (req, res, next) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) return res.status(400).json({ errors: errors.array() });
+    next();
+  },
+  updatePersonalData
 );

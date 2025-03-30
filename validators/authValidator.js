@@ -14,3 +14,10 @@ exports.loginValidator = [
   body('email').isEmail().withMessage('Email inválido'),
   body('password').notEmpty().withMessage('La contraseña es obligatoria'),
 ];
+
+exports.personalDataValidator = [
+  body('name').notEmpty().withMessage('El nombre es obligatorio'),
+  body('lastname').notEmpty().withMessage('Los apellidos son obligatorios'),
+  body('nif').notEmpty().withMessage('El NIF es obligatorio'),
+];
+

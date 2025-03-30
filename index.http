@@ -23,3 +23,14 @@ Content-Type: application/json
   "email": "gonzalooo@mail.com",
   "password": "12345678"
 }
+
+### Actualizar datos personales (Paso 4.1)
+PUT http://localhost:3000/api/user/register
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3ZTdmNGIyMTUxNTQ3OTYzNjgyNWM1ZiIsImlhdCI6MTc0MzMzNzkyNCwiZXhwIjoxNzQzMzQxNTI0fQ.F3ndmnQpj3GcHa1LgQBeavpJWvveZnN8DArMSLj2BrU
+Content-Type: application/json
+
+{
+  "name": "Gonzalo",
+  "lastname": "Montero Sierra",
+  "nif": "12345678A"
+}

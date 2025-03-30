@@ -94,3 +94,20 @@ exports.login = async (req, res) => {
     res.status(500).json({ error: err.message });
   }
 };
+
+exports.updatePersonalData = async (req, res) => {
+  const { name, lastname, nif } = req.body;
+  const user = req.user;
+
+  try {
+    user.personal = { name, lastname, nif };
+    await user.save();
+
+    res.status(200).json({
+      message: 'Datos personales actualizados correctamente',
+      personal: user.personal,
+    });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+};
