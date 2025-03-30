@@ -111,3 +111,35 @@ exports.updatePersonalData = async (req, res) => {
     res.status(500).json({ error: err.message });
   }
 };
+
+exports.updateCompanyData = async (req, res) => {
+  const { name, cif, address, isFreelancer } = req.body;
+  const user = req.user;
+
+  try {
+    if (isFreelancer) {
+      user.company = {
+        name: user.personal.name + ' ' + user.personal.lastname,
+        cif: user.personal.nif,
+        address,
+        isFreelancer: true,
+      };
+    } else {
+      user.company = {
+        name,
+        cif,
+        address,
+        isFreelancer: false,
+      };
+    }
+
+    await user.save();
+
+    res.status(200).json({
+      message: 'Datos de la compañía actualizados correctamente',
+      company: user.company,
+    });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+};

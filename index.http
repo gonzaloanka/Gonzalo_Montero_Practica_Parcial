@@ -26,11 +26,22 @@ Content-Type: application/json
 
 ### Actualizar datos personales (Paso 4.1)
 PUT http://localhost:3000/api/user/register
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3ZTdmNGIyMTUxNTQ3OTYzNjgyNWM1ZiIsImlhdCI6MTc0MzMzNzkyNCwiZXhwIjoxNzQzMzQxNTI0fQ.F3ndmnQpj3GcHa1LgQBeavpJWvveZnN8DArMSLj2BrU
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3ZTdmNGIyMTUxNTQ3OTYzNjgyNWM1ZiIsImlhdCI6MTc0MzM0NzQxNiwiZXhwIjoxNzQzMzUxMDE2fQ.gxYaVtEq0XelqIOndaxTuBLqmWV2o_O-HImrUOWhSaY
 Content-Type: application/json
 
 {
   "name": "Gonzalo",
   "lastname": "Montero Sierra",
   "nif": "12345678A"
+}
+###
+PATCH http://localhost:3000/api/user/company
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3ZTdmNGIyMTUxNTQ3OTYzNjgyNWM1ZiIsImlhdCI6MTc0MzM0NzQxNiwiZXhwIjoxNzQzMzUxMDE2fQ.gxYaVtEq0XelqIOndaxTuBLqmWV2o_O-HImrUOWhSaY
+Content-Type: application/json
+
+{
+  "name": "Mi Empresa S.L.",
+  "cif": "B12345678",
+  "address": "Calle Empresa 42",
+  "isFreelancer": false
 }

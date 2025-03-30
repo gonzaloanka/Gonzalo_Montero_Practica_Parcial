@@ -21,3 +21,11 @@ exports.personalDataValidator = [
   body('nif').notEmpty().withMessage('El NIF es obligatorio'),
 ];
 
+exports.companyDataValidator = [
+  body('name').notEmpty().withMessage('Nombre de la empresa requerido'),
+  body('cif').notEmpty().withMessage('CIF requerido'),
+  body('address').notEmpty().withMessage('Dirección requerida'),
+  body('isFreelancer').isBoolean().withMessage('isFreelancer debe ser true o false'),
+];
+
+

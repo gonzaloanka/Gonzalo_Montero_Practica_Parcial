@@ -7,6 +7,9 @@ const { validationResult } = require('express-validator');
 const { loginValidator } = require('../validators/authValidator');
 const { updatePersonalData } = require('../controllers/auth');
 const { personalDataValidator } = require('../validators/authValidator');
+const { updateCompanyData } = require('../controllers/auth');
+const { companyDataValidator } = require('../validators/authValidator');
+
 
 
 router.post('/register', registerValidator, (req, res, next) => {
@@ -48,4 +51,16 @@ router.put('/register',
     next();
   },
   updatePersonalData
+);
+
+
+router.patch('/company',
+  authMiddleware,
+  companyDataValidator,
+  (req, res, next) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) return res.status(400).json({ errors: errors.array() });
+    next();
+  },
+  updateCompanyData
 );
