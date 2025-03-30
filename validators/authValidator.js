@@ -9,3 +9,8 @@ exports.validateEmailCodeValidator = [
     .isLength({ min: 6, max: 6 })
     .withMessage('El código debe tener 6 dígitos'),
 ];
+
+exports.loginValidator = [
+  body('email').isEmail().withMessage('Email inválido'),
+  body('password').notEmpty().withMessage('La contraseña es obligatoria'),
+];

@@ -61,3 +61,36 @@ exports.validateEmail = async (req, res) => {
     return res.status(400).json({ message: 'Código incorrecto' });
   }
 };
+
+const { comparePassword } = require('../utils/hashPassword');
+
+exports.login = async (req, res) => {
+  const { email, password } = req.body;
+
+  try {
+    const user = await User.findOne({ email });
+
+    if (!user) {
+      return res.status(404).json({ message: 'Usuario no encontrado' });
+    }
+
+    if (user.status !== 'validated') {
+      return res.status(403).json({ message: 'Email no validado aún' });
+    }
+
+    const passwordMatch = await comparePassword(password, user.password);
+    if (!passwordMatch) {
+      return res.status(401).json({ message: 'Credenciales incorrectas' });
+    }
+
+    const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: '1h' });
+
+    res.status(200).json({
+      email: user.email,
+      role: user.role,
+      token,
+    });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+};
