@@ -63,3 +63,13 @@ Content-Type: image/png
 ### GET user (paso 6.1)
 GET http://localhost:3000/api/user
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3ZTdmNGIyMTUxNTQ3OTYzNjgyNWM1ZiIsImlhdCI6MTc0MzQxNzU2NiwiZXhwIjoxNzQzNDIxMTY2fQ.ms8G0A7AL1l20I-othbqdTjpoDl5P_nI-r2aA8Nue_s
+
+### DELETE soft
+DELETE http://localhost:3000/api/user
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3ZTdmNGIyMTUxNTQ3OTYzNjgyNWM1ZiIsImlhdCI6MTc0MzQxNzU2NiwiZXhwIjoxNzQzNDIxMTY2fQ.ms8G0A7AL1l20I-othbqdTjpoDl5P_nI-r2aA8Nue_s
+
+### DELETE hard
+DELETE http://localhost:3000/api/user?soft=false
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3ZTdmNGIyMTUxNTQ3OTYzNjgyNWM1ZiIsImlhdCI6MTc0MzQxNzU2NiwiZXhwIjoxNzQzNDIxMTY2fQ.ms8G0A7AL1l20I-othbqdTjpoDl5P_nI-r2aA8Nue_s
+
+

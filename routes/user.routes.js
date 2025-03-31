@@ -12,7 +12,7 @@ const { companyDataValidator } = require('../validators/authValidator');
 const upload = require('../middleware/uploadLogo');
 const { uploadLogo } = require('../controllers/auth');
 const { getUser } = require('../controllers/auth');
-
+const { deleteUser } = require('../controllers/auth');
 
 router.post('/register', registerValidator, (req, res, next) => {
   const errors = validationResult(req);
@@ -74,3 +74,5 @@ router.patch('/logo',
 );
 
 router.get('/', authMiddleware, getUser);
+
+router.delete('/', authMiddleware, deleteUser);

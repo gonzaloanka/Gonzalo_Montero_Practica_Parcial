@@ -177,3 +177,21 @@ exports.getUser = async (req, res) => {
     logoUrl: user.logoUrl
   });
 };
+
+exports.deleteUser = async (req, res) => {
+  const user = req.user;
+  const soft = req.query.soft !== 'false'; // por defecto true
+
+  try {
+    if (soft) {
+      user.deleted = true;
+      await user.save();
+      return res.status(200).json({ message: 'Usuario desactivado (soft delete)' });
+    } else {
+      await User.deleteOne({ _id: user._id });
+      return res.status(200).json({ message: 'Usuario eliminado permanentemente' });
+    }
+  } catch (err) {
+    return res.status(500).json({ error: err.message });
+  }
+};
