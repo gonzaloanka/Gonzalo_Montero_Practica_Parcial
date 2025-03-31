@@ -180,7 +180,7 @@ exports.getUser = async (req, res) => {
 
 exports.deleteUser = async (req, res) => {
   const user = req.user;
-  const soft = req.query.soft !== 'false'; // por defecto true
+  const soft = req.query.soft !== 'false';
 
   try {
     if (soft) {
