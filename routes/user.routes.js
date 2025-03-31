@@ -11,6 +11,7 @@ const { updateCompanyData } = require('../controllers/auth');
 const { companyDataValidator } = require('../validators/authValidator');
 const upload = require('../middleware/uploadLogo');
 const { uploadLogo } = require('../controllers/auth');
+const { getUser } = require('../controllers/auth');
 
 
 router.post('/register', registerValidator, (req, res, next) => {
@@ -71,3 +72,5 @@ router.patch('/logo',
   upload.single('logo'),
   uploadLogo
 );
+
+router.get('/', authMiddleware, getUser);

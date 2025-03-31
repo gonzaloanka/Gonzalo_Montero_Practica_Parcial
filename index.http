@@ -50,7 +50,7 @@ Content-Type: application/json
 
 ### Subir logo (Paso 5)
 PATCH http://localhost:3000/api/user/logo
-Authorization: Bearer {{token}}
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3ZTdmNGIyMTUxNTQ3OTYzNjgyNWM1ZiIsImlhdCI6MTc0MzQxMzQyNywiZXhwIjoxNzQzNDE3MDI3fQ.gaJDFAaOb9hziegw0baqbeXmPLSEQ0tnKXz-wDPm9PY
 Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
 
 ------WebKitFormBoundary7MA4YWxkTrZu0gW
@@ -59,3 +59,7 @@ Content-Type: image/png
 
 < ./storage/logo/logo.png
 ------WebKitFormBoundary7MA4YWxkTrZu0gW--
+
+### GET user (paso 6.1)
+GET http://localhost:3000/api/user
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3ZTdmNGIyMTUxNTQ3OTYzNjgyNWM1ZiIsImlhdCI6MTc0MzQxNzU2NiwiZXhwIjoxNzQzNDIxMTY2fQ.ms8G0A7AL1l20I-othbqdTjpoDl5P_nI-r2aA8Nue_s

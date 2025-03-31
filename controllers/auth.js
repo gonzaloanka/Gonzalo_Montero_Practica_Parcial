@@ -164,3 +164,16 @@ exports.uploadLogo = async (req, res) => {
     res.status(500).json({ error: err.message });
   }
 };
+
+exports.getUser = async (req, res) => {
+  const user = req.user;
+
+  res.status(200).json({
+    email: user.email,
+    status: user.status,
+    role: user.role,
+    personal: user.personal,
+    company: user.company,
+    logoUrl: user.logoUrl
+  });
+};
