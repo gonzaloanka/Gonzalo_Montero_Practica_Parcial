@@ -1,3 +1,4 @@
+### Registro (paso 1)
 POST http://localhost:3000/api/user/register
 Content-Type: application/json
 
@@ -15,7 +16,7 @@ Content-Type: application/json
   "code": "493013"
 }
 
-###
+### Login (Paso 3)
 POST http://localhost:3000/api/user/login
 Content-Type: application/json
 
@@ -34,9 +35,9 @@ Content-Type: application/json
   "lastname": "Montero Sierra",
   "nif": "12345678A"
 }
-###
+### Actualizar datos compañía (Paso 4.2)
 PATCH http://localhost:3000/api/user/company
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3ZTdmNGIyMTUxNTQ3OTYzNjgyNWM1ZiIsImlhdCI6MTc0MzM0NzQxNiwiZXhwIjoxNzQzMzUxMDE2fQ.gxYaVtEq0XelqIOndaxTuBLqmWV2o_O-HImrUOWhSaY
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3ZTdmNGIyMTUxNTQ3OTYzNjgyNWM1ZiIsImlhdCI6MTc0MzQxMzQyNywiZXhwIjoxNzQzNDE3MDI3fQ.gaJDFAaOb9hziegw0baqbeXmPLSEQ0tnKXz-wDPm9PY
 Content-Type: application/json
 
 {
@@ -45,3 +46,16 @@ Content-Type: application/json
   "address": "Calle Empresa 42",
   "isFreelancer": false
 }
+
+
+### Subir logo (Paso 5)
+PATCH http://localhost:3000/api/user/logo
+Authorization: Bearer {{token}}
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
+
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="logo"; filename="logo.png"
+Content-Type: image/png
+
+< ./storage/logo/logo.png
+------WebKitFormBoundary7MA4YWxkTrZu0gW--

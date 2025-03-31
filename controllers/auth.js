@@ -143,3 +143,24 @@ exports.updateCompanyData = async (req, res) => {
     res.status(500).json({ error: err.message });
   }
 };
+
+exports.uploadLogo = async (req, res) => {
+  const user = req.user;
+
+  if (!req.file) {
+    return res.status(400).json({ message: 'No se ha subido ninguna imagen' });
+  }
+
+  const imageUrl = `/storage/logos/${req.file.filename}`;
+  user.logoUrl = imageUrl;
+
+  try {
+    await user.save();
+    res.status(200).json({
+      message: 'Logo subido correctamente',
+      logoUrl: imageUrl
+    });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+};

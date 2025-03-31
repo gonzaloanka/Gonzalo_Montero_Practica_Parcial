@@ -9,7 +9,8 @@ const { updatePersonalData } = require('../controllers/auth');
 const { personalDataValidator } = require('../validators/authValidator');
 const { updateCompanyData } = require('../controllers/auth');
 const { companyDataValidator } = require('../validators/authValidator');
-
+const upload = require('../middleware/uploadLogo');
+const { uploadLogo } = require('../controllers/auth');
 
 
 router.post('/register', registerValidator, (req, res, next) => {
@@ -63,4 +64,10 @@ router.patch('/company',
     next();
   },
   updateCompanyData
+);
+
+router.patch('/logo',
+  authMiddleware,
+  upload.single('logo'),
+  uploadLogo
 );
