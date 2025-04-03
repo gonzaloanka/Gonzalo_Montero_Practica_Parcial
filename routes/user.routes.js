@@ -17,19 +17,14 @@ const { validationResult } = require('express-validator');
  *       content:
  *         application/json:
  *           schema:
- *             type: object
- *             required: [email, password]
- *             properties:
- *               email:
- *                 type: string
- *               password:
- *                 type: string
+ *             $ref: '#/components/schemas/RegisterUser'
  *     responses:
  *       201:
  *         description: Usuario registrado correctamente
  *       409:
  *         description: Email ya existente
  */
+
 router.post('/register', registerValidator, (req, res, next) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) return res.status(400).json({ errors: errors.array() });
@@ -49,14 +44,12 @@ router.post('/register', registerValidator, (req, res, next) => {
  *       content:
  *         application/json:
  *           schema:
- *             type: object
- *             properties:
- *               code:
- *                 type: string
+ *             $ref: '#/components/schemas/ValidateEmailCode'
  *     responses:
  *       200:
  *         description: Email validado correctamente
  */
+
 router.put('/validate',
   authMiddleware,
   validateEmailCodeValidator,
@@ -79,17 +72,12 @@ router.put('/validate',
  *       content:
  *         application/json:
  *           schema:
- *             type: object
- *             required: [email, password]
- *             properties:
- *               email:
- *                 type: string
- *               password:
- *                 type: string
+ *             $ref: '#/components/schemas/LoginUser'
  *     responses:
  *       200:
  *         description: Login exitoso
  */
+
 router.post('/login',
   loginValidator,
   (req, res, next) => {
@@ -113,18 +101,12 @@ router.post('/login',
  *       content:
  *         application/json:
  *           schema:
- *             type: object
- *             properties:
- *               name:
- *                 type: string
- *               lastname:
- *                 type: string
- *               nif:
- *                 type: string
+ *             $ref: '#/components/schemas/PersonalData'
  *     responses:
  *       200:
  *         description: Datos personales actualizados
  */
+
 router.put('/register',
   authMiddleware,
   personalDataValidator,
@@ -149,20 +131,12 @@ router.put('/register',
  *       content:
  *         application/json:
  *           schema:
- *             type: object
- *             properties:
- *               name:
- *                 type: string
- *               cif:
- *                 type: string
- *               address:
- *                 type: string
- *               isFreelancer:
- *                 type: boolean
+ *             $ref: '#/components/schemas/CompanyData'
  *     responses:
  *       200:
  *         description: Datos de la compañía actualizados
  */
+
 router.patch('/company',
   authMiddleware,
   companyDataValidator,
@@ -187,15 +161,12 @@ router.patch('/company',
  *       content:
  *         multipart/form-data:
  *           schema:
- *             type: object
- *             properties:
- *               logo:
- *                 type: string
- *                 format: binary
+ *             $ref: '#/components/schemas/UploadLogo'
  *     responses:
  *       200:
  *         description: Logo subido correctamente
  */
+
 router.patch('/logo',
   authMiddleware,
   upload.single('logo'),
