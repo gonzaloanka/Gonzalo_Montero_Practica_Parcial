@@ -8,14 +8,17 @@ dotenv.config();
 const app = express();
 setupSwagger(app);
 
-
 app.use(cors());
 app.use(express.json());
 
 app.use('/api/user', require('./routes/user.routes'));
 
 connectDB();
+
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
+const server = app.listen(PORT, () => {
   console.log(`Servidor corriendo en puerto ${PORT}`);
 });
+
+module.exports = { app, server };
+
