@@ -15,17 +15,18 @@ const initialUsers = [
 ];
 
 let token;
+let userData;
 
 beforeAll(async () => {
   await new Promise((resolve) => mongoose.connection.once('connected', resolve));
-
   await usersModel.deleteMany({});
 
   const password = await hashPassword(initialUsers[0].password);
   const body = { ...initialUsers[0], password };
 
-  const userData = await usersModel.create(body);
-  userData.set("password", undefined, { strict: false });
+  userData = await usersModel.create(body);
+  userData.status = 'validated';
+  await userData.save();
 
   token = await tokenSign(userData, process.env.JWT_SECRET);
 });
@@ -103,6 +104,51 @@ it('should get current user', async () => {
       expect(response.body).toHaveProperty('errors');
     });
   });
+
+  describe('POST /api/user/login', () => {
+    it('debería hacer login correctamente y devolver token', async () => {
+      const response = await api
+        .post('/api/user/login')
+        .send({
+          email: initialUsers[0].email,
+          password: initialUsers[0].password
+        })
+        .expect(200)
+        .expect('Content-Type', /application\/json/);
+  
+      expect(response.body).toHaveProperty('token');
+      expect(response.body).toHaveProperty('email');
+      expect(response.body.email).toBe(initialUsers[0].email);
+    });
+  
+    it('debería fallar si el email no existe', async () => {
+      await api
+        .post('/api/user/login')
+        .send({
+          email: 'inexistente@mail.com',
+          password: 'cualquiera123'
+        })
+        .expect(404);
+    });
+  
+    it('debería fallar si la contraseña es incorrecta', async () => {
+      await api
+        .post('/api/user/login')
+        .send({
+          email: initialUsers[0].email,
+          password: 'incorrecta'
+        })
+        .expect(401);
+    });
+  
+    it('debería fallar si faltan campos', async () => {
+      await api
+        .post('/api/user/login')
+        .send({ email: '' })
+        .expect(400);
+    });
+  });
+  
   
 
 afterAll(async () => {
