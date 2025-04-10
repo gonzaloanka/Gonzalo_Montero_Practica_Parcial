@@ -268,6 +268,41 @@ describe('PATCH /api/user/logo', () => {
   });
 });
 
+describe('DELETE /api/user', () => {
+  it('debería desactivar el usuario (soft delete)', async () => {
+    const response = await api
+      .delete('/api/user')
+      .auth(token, { type: 'bearer' })
+      .expect(200)
+      .expect('Content-Type', /application\/json/);
+
+    expect(response.body.message).toBe('Usuario desactivado (soft delete)');
+
+    const dbUser = await usersModel.findById(userData._id);
+    expect(dbUser.deleted).toBe(true);
+  });
+
+  it('debería eliminar el usuario permanentemente (hard delete)', async () => {
+    const newUser = await usersModel.create({
+      email: 'eliminar@correo.com',
+      password: await hashPassword('12345678'),
+      status: 'validated'
+    });
+
+    const newToken = await tokenSign(newUser, process.env.JWT_SECRET);
+
+    const response = await api
+      .delete('/api/user?soft=false')
+      .auth(newToken, { type: 'bearer' })
+      .expect(200)
+      .expect('Content-Type', /application\/json/);
+
+    expect(response.body.message).toBe('Usuario eliminado permanentemente');
+
+    const deletedUser = await usersModel.findById(newUser._id);
+    expect(deletedUser).toBeNull();
+  });
+});
   
 
 afterAll(async () => {
