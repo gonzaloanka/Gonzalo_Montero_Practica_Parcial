@@ -8,21 +8,22 @@ exports.register = async (req, res) => {
 
   try {
     const existing = await User.findOne({ email });
+
     if (existing && existing.status === 'validated') {
-      return res.status(409).json({ message: 'Email ya registrado y validado' });
+      return res.status(409).json({ error: 'Email ya registrado y validado' });
     }
 
     const hashed = await hashPassword(password);
     const code = generateCode();
+
     const newUser = await User.create({
       email,
       password: hashed,
       code,
+      maxAttempts: 3
     });
 
-    const token = jwt.sign({ id: newUser._id }, process.env.JWT_SECRET, {
-        expiresIn: '1h'
-      });
+    const token = jwt.sign({ id: newUser._id }, process.env.JWT_SECRET, { expiresIn: '1h' });
 
     res.status(201).json({
       email: newUser.email,
@@ -32,9 +33,14 @@ exports.register = async (req, res) => {
     });
 
   } catch (err) {
+    if (err.code === 11000 && err.keyPattern?.email) {
+      return res.status(409).json({ error: 'Email ya existe' });
+    }
+
     res.status(500).json({ error: err.message });
   }
 };
+
 
 exports.validateEmail = async (req, res) => {
   const { code } = req.body;
