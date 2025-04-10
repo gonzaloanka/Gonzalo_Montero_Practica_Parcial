@@ -32,4 +32,38 @@ const createClient = async (req, res) => {
   }
 };
 
-module.exports = { createClient };
+const updateClient = async (req, res) => {
+  const { id } = req.params;
+  const { name, email, phone, address } = req.body;
+  const user = req.user;
+
+  try {
+    const client = await Client.findOne({
+      _id: id,
+      $or: [
+        { createdBy: user._id },
+        { company: user.company }
+      ]
+    });
+
+    if (!client) {
+      return res.status(404).json({ error: 'Cliente no encontrado o no autorizado' });
+    }
+
+    client.name = name;
+    if (email !== undefined) client.email = email;
+    if (phone !== undefined) client.phone = phone;
+    if (address !== undefined) client.address = address;
+
+    await client.save();
+
+    res.status(200).json(client);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+
+module.exports = {
+  createClient,
+  updateClient,
+};

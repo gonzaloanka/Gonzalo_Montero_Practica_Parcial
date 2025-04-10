@@ -83,3 +83,17 @@ Content-Type: application/json
   "phone": "666777888",
   "address": "Calle Empresa 42"
 }
+
+
+### Actualizar un cliente existente (PUT)
+PUT http://localhost:3000/api/client/67f77af2791c8ec9246fadc5
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3Zjc3N2JjZWQ5YTY2NDVkOWUyZmM1MiIsImlhdCI6MTc0NDI3MzA5OCwiZXhwIjoxNzQ0Mjc2Njk4fQ.vIFiQh5plPtWFUUOH1QHiRAcSXW2UUIvi2BjtYZ3puE
+Content-Type: application/json
+
+{
+  "name": "Cliente Actualizado S.L.",
+  "email": "clienteactualizado@mail.com",
+  "phone": "999888777",
+  "address": "Calle Nueva 99"
+}
+
