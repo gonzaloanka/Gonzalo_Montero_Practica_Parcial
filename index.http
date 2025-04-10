@@ -3,17 +3,17 @@ POST http://localhost:3000/api/user/register
 Content-Type: application/json
 
 {
-  "email": "gonzalooo@mail.com",
+  "email": "gonzaloo@mail.com",
   "password": "12345678"
 }
 
 ### Validar email (Paso 2)
 PUT http://localhost:3000/api/user/validate
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3ZTdmNGIyMTUxNTQ3OTYzNjgyNWM1ZiIsImlhdCI6MTc0MzI1NDcwNiwiZXhwIjoxNzQzMjU4MzA2fQ.rYVfi4D1piZ0lo2f8Ngq_M7gh6LgGaGCM3xXiTZbYAk
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3Zjc3N2JjZWQ5YTY2NDVkOWUyZmM1MiIsImlhdCI6MTc0NDI3MTI5MiwiZXhwIjoxNzQ0Mjc0ODkyfQ.pSMKDAj8NwZitIPv1zB7gSHiFpZGNIoFmSwlBigXUHE
 Content-Type: application/json
 
 {
-  "code": "493013"
+  "code": "224511"
 }
 
 ### Login (Paso 3)
@@ -21,13 +21,13 @@ POST http://localhost:3000/api/user/login
 Content-Type: application/json
 
 {
-  "email": "gonzalooo@mail.com",
+  "email": "gonzaloo@mail.com",
   "password": "12345678"
 }
 
 ### Actualizar datos personales (Paso 4.1)
 PUT http://localhost:3000/api/user/register
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3ZTdmNGIyMTUxNTQ3OTYzNjgyNWM1ZiIsImlhdCI6MTc0MzM0NzQxNiwiZXhwIjoxNzQzMzUxMDE2fQ.gxYaVtEq0XelqIOndaxTuBLqmWV2o_O-HImrUOWhSaY
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3Zjc3N2JjZWQ5YTY2NDVkOWUyZmM1MiIsImlhdCI6MTc0NDI3MTM3OSwiZXhwIjoxNzQ0Mjc0OTc5fQ.iWGPu6Bh9XpAsGhi16bG6HW1h-IhQwimZ9q6Zyyd1No
 Content-Type: application/json
 
 {
@@ -37,7 +37,7 @@ Content-Type: application/json
 }
 ### Actualizar datos compañía (Paso 4.2)
 PATCH http://localhost:3000/api/user/company
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3ZTdmNGIyMTUxNTQ3OTYzNjgyNWM1ZiIsImlhdCI6MTc0MzQxMzQyNywiZXhwIjoxNzQzNDE3MDI3fQ.gaJDFAaOb9hziegw0baqbeXmPLSEQ0tnKXz-wDPm9PY
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3Zjc3N2JjZWQ5YTY2NDVkOWUyZmM1MiIsImlhdCI6MTc0NDI3MTM3OSwiZXhwIjoxNzQ0Mjc0OTc5fQ.iWGPu6Bh9XpAsGhi16bG6HW1h-IhQwimZ9q6Zyyd1No
 Content-Type: application/json
 
 {
@@ -72,4 +72,14 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3ZTdmNGIyM
 DELETE http://localhost:3000/api/user?soft=false
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3ZTdmNGIyMTUxNTQ3OTYzNjgyNWM1ZiIsImlhdCI6MTc0MzQxNzU2NiwiZXhwIjoxNzQzNDIxMTY2fQ.ms8G0A7AL1l20I-othbqdTjpoDl5P_nI-r2aA8Nue_s
 
+### Crear cliente
+POST http://localhost:3000/api/client
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3Zjc3N2JjZWQ5YTY2NDVkOWUyZmM1MiIsImlhdCI6MTc0NDI3MjA5MCwiZXhwIjoxNzQ0Mjc1NjkwfQ.pl5tOB06iCVNmPWKynMjGIsTNhMc4jpNgqvVmRfs9T4
+Content-Type: application/json
 
+{
+  "name": "Mi Empresa S.L.",
+  "email": "gonzalooms@mail.com",
+  "phone": "666777888",
+  "address": "Calle Empresa 42"
+}
