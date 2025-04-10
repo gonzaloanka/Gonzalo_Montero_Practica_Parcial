@@ -1,3 +1,4 @@
+// Este archivo contiene todos los tests automatizados de la práctica parcial, relacionados con la gestión de usuarios.
 const supertest = require('supertest');
 const { app, server } = require('../app.js');
 const mongoose = require('mongoose');
