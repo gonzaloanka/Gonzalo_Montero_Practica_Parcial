@@ -241,6 +241,33 @@ it('should get current user', async () => {
         .expect(400);
     });
   });
+
+  const fs = require('fs');
+const path = require('path');
+
+describe('PATCH /api/user/logo', () => {
+  it('debería subir un logo correctamente', async () => {
+    const filePath = path.join(__dirname, '../storage/logos/logo.png');
+
+    const response = await api
+      .patch('/api/user/logo')
+      .auth(token, { type: 'bearer' })
+      .attach('logo', filePath)
+      .expect(200)
+      .expect('Content-Type', /application\/json/);
+
+    expect(response.body.message).toBe('Logo subido correctamente');
+    expect(response.body).toHaveProperty('logoUrl');
+  });
+
+  it('debería fallar si no se envía ninguna imagen', async () => {
+    await api
+      .patch('/api/user/logo')
+      .auth(token, { type: 'bearer' })
+      .expect(400);
+  });
+});
+
   
 
 afterAll(async () => {
