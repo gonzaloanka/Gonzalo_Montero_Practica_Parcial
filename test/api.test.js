@@ -149,6 +149,47 @@ it('should get current user', async () => {
     });
   });
   
+  describe('PUT /api/user/register (onboarding - datos personales)', () => {
+    it('debería actualizar los datos personales del usuario', async () => {
+      const personalData = {
+        name: 'Gonzalo',
+        lastname: 'Montero Sierra',
+        nif: '12345678A'
+      };
+  
+      const response = await api
+        .put('/api/user/register')
+        .auth(token, { type: 'bearer' })
+        .send(personalData)
+        .expect(200)
+        .expect('Content-Type', /application\/json/);
+  
+      expect(response.body.message).toBe('Datos personales actualizados correctamente');
+      expect(response.body.personal).toMatchObject(personalData);
+    });
+  
+    it('debería fallar si falta el nombre', async () => {
+      await api
+        .put('/api/user/register')
+        .auth(token, { type: 'bearer' })
+        .send({
+          lastname: 'Montero Sierra',
+          nif: '12345678A'
+        })
+        .expect(400);
+    });
+  
+    it('debería fallar si falta el NIF', async () => {
+      await api
+        .put('/api/user/register')
+        .auth(token, { type: 'bearer' })
+        .send({
+          name: 'Gonzalo',
+          lastname: 'Montero Sierra'
+        })
+        .expect(400);
+    });
+  });
   
 
 afterAll(async () => {
