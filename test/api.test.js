@@ -191,6 +191,57 @@ it('should get current user', async () => {
     });
   });
   
+  describe('PATCH /api/user/company (onboarding - datos empresa)', () => {
+    it('debería actualizar los datos de la compañía correctamente', async () => {
+      const companyData = {
+        name: 'Empresa S.L.',
+        cif: 'B12345678',
+        address: 'Calle de la Feria 33',
+        isFreelancer: false
+      };
+  
+      const response = await api
+        .patch('/api/user/company')
+        .auth(token, { type: 'bearer' })
+        .send(companyData)
+        .expect(200)
+        .expect('Content-Type', /application\/json/);
+  
+      expect(response.body.message).toBe('Datos de la compañía actualizados correctamente');
+      expect(response.body.company).toMatchObject(companyData);
+    });
+  
+    it('debería usar los datos personales si el usuario es autónomo', async () => {
+      const response = await api
+        .patch('/api/user/company')
+        .auth(token, { type: 'bearer' })
+        .send({
+          name: 'IGNORADO',
+          cif: 'IGNORADO',
+          address: 'Calle Autónomo 9',
+          isFreelancer: true
+        })
+        .expect(200);
+  
+      expect(response.body.company.isFreelancer).toBe(true);
+      expect(response.body.company.address).toBe('Calle Autónomo 9');
+      expect(response.body.company.name).toBe('Gonzalo Montero Sierra');
+      expect(response.body.company.cif).toBe('12345678A');
+    });
+  
+    it('debería fallar si faltan campos obligatorios', async () => {
+      await api
+        .patch('/api/user/company')
+        .auth(token, { type: 'bearer' })
+        .send({
+          name: 'Falta CIF',
+          address: 'Dirección sin CIF',
+          isFreelancer: false
+        })
+        .expect(400);
+    });
+  });
+  
 
 afterAll(async () => {
   server.close();
