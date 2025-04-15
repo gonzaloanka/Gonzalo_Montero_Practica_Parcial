@@ -6,6 +6,9 @@ const { clientValidator } = require('../validators/clientValidator');
 const { validationResult } = require('express-validator');
 const { updateClientValidator } = require('../validators/clientValidator');
 const { deleteClient } = require('../controllers/client');
+const { getArchivedClients, recoverClient } = require('../controllers/client');
+
+
 
 router.post('/',
   authMiddleware,
@@ -30,6 +33,8 @@ router.put('/:id',
 );
 
 router.get('/', authMiddleware, getAllClients);
+router.get('/archived', authMiddleware, getArchivedClients);
+router.patch('/recover/:id', authMiddleware, recoverClient);
 router.get('/:id', authMiddleware, getClientById);
 
 

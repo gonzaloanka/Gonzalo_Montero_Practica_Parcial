@@ -137,11 +137,59 @@ const deleteClient = async (req, res) => {
   }
 };
 
+const getArchivedClients = async (req, res) => {
+  const user = req.user;
+
+  try {
+    const archived = await Client.find({
+      deleted: true,
+      $or: [
+        { createdBy: user._id },
+        { company: user.company }
+      ]
+    });
+
+    res.status(200).json(archived);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+
+const recoverClient = async (req, res) => {
+  const user = req.user;
+  const { id } = req.params;
+
+  try {
+    const client = await Client.findOne({
+      _id: id,
+      deleted: true,
+      $or: [
+        { createdBy: user._id },
+        { company: user.company }
+      ]
+    });
+
+    if (!client) {
+      return res.status(404).json({ error: 'Cliente no encontrado o no archivado' });
+    }
+
+    client.deleted = false;
+    await client.save();
+
+    res.status(200).json({ message: 'Cliente recuperado correctamente' });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+
+
 
 module.exports = {
   createClient,
   updateClient,
   getAllClients,
   getClientById,
-  deleteClient
+  deleteClient,
+  getArchivedClients,
+  recoverClient
 };
