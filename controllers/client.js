@@ -63,7 +63,59 @@ const updateClient = async (req, res) => {
   }
 };
 
+const getAllClients = async (req, res) => {
+  const user = req.user;
+
+  try {
+    const clients = await Client.find({
+      deleted: false,
+      $or: [
+        { createdBy: user._id },
+        { company: user.company }
+      ]
+    });
+
+    res.status(200).json(clients);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+
+const getClientById = async (req, res) => {
+  const user = req.user;
+  const { id } = req.params;
+
+  try {
+    const client = await Client.findOne({
+      _id: id,
+      deleted: false,
+      $or: [
+        { createdBy: user._id },
+        { company: user.company }
+      ]
+    });
+
+    if (!client) {
+      return res.status(404).json({ error: 'Cliente no encontrado o no autorizado' });
+    }
+
+    res.status(200).json(client);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+
 module.exports = {
   createClient,
   updateClient,
+  getAllClients,
+  getClientById
+};
+
+
+module.exports = {
+  createClient,
+  updateClient,
+  getAllClients,
+  getClientById
 };
