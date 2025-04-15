@@ -5,6 +5,7 @@ const { createClient, updateClient, getAllClients, getClientById } = require('..
 const { clientValidator } = require('../validators/clientValidator');
 const { validationResult } = require('express-validator');
 const { updateClientValidator } = require('../validators/clientValidator');
+const { deleteClient } = require('../controllers/client');
 
 router.post('/',
   authMiddleware,
@@ -30,6 +31,15 @@ router.put('/:id',
 
 router.get('/', authMiddleware, getAllClients);
 router.get('/:id', authMiddleware, getClientById);
+
+
+
+
+router.delete('/:id',
+  authMiddleware,
+  deleteClient
+);
+
 
 
 module.exports = router;

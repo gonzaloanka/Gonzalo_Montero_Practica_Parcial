@@ -105,11 +105,36 @@ const getClientById = async (req, res) => {
   }
 };
 
-module.exports = {
-  createClient,
-  updateClient,
-  getAllClients,
-  getClientById
+const deleteClient = async (req, res) => {
+  const { id } = req.params;
+  const soft = req.query.soft !== 'false'; // por defecto es soft delete
+  const user = req.user;
+
+  try {
+    const client = await Client.findOne({
+      _id: id,
+      $or: [
+        { createdBy: user._id },
+        { company: user.company }
+      ]
+    });
+
+    if (!client) {
+      return res.status(404).json({ error: 'Cliente no encontrado o no autorizado' });
+    }
+
+    if (soft) {
+      client.deleted = true;
+      await client.save();
+      return res.status(200).json({ message: 'Cliente archivado correctamente (soft delete)' });
+    } else {
+      await client.deleteOne();
+      return res.status(200).json({ message: 'Cliente eliminado permanentemente (hard delete)' });
+    }
+
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
 };
 
 
@@ -117,5 +142,6 @@ module.exports = {
   createClient,
   updateClient,
   getAllClients,
-  getClientById
+  getClientById,
+  deleteClient
 };

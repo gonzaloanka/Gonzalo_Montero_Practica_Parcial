@@ -104,3 +104,11 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3Zjc3N2JjZ
 ### Obtener cliente por ID
 GET http://localhost:3000/api/client/67f77af2791c8ec9246fadc5
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3Zjc3N2JjZWQ5YTY2NDVkOWUyZmM1MiIsImlhdCI6MTc0NDcxNTYxNywiZXhwIjoxNzQ0NzE5MjE3fQ.j-mCjes51yEBYxKfNVx_Qi_8E5MxQUzkGY75KNJIdTg
+
+### Eliminar cliente (soft delete por defecto)
+DELETE http://localhost:3000/api/client/67f77af2791c8ec9246fadc5
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3Zjc3N2JjZWQ5YTY2NDVkOWUyZmM1MiIsImlhdCI6MTc0NDcxNzg1OSwiZXhwIjoxNzQ0NzIxNDU5fQ.nNDM2bdqPmVwOgfgCr_IsoDGtH_zwU_4S4EiIcxQXOg
+
+### Eliminar cliente permanentemente (hard delete)
+DELETE http://localhost:3000/api/client/67f77af2791c8ec9246fadc5?soft=false
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3Zjc3N2JjZWQ5YTY2NDVkOWUyZmM1MiIsImlhdCI6MTc0NDcxNTYxNywiZXhwIjoxNzQ0NzE5MjE3fQ.j-mCjes51yEBYxKfNVx_Qi_8E5MxQUzkGY75KNJIdTg
