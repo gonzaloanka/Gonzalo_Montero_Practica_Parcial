@@ -35,6 +35,7 @@ Content-Type: application/json
   "lastname": "Montero Sierra",
   "nif": "12345678A"
 }
+
 ### Actualizar datos compañía (Paso 4.2)
 PATCH http://localhost:3000/api/user/company
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3Zjc3N2JjZWQ5YTY2NDVkOWUyZmM1MiIsImlhdCI6MTc0NDI3MTM3OSwiZXhwIjoxNzQ0Mjc0OTc5fQ.iWGPu6Bh9XpAsGhi16bG6HW1h-IhQwimZ9q6Zyyd1No
@@ -143,3 +144,12 @@ Content-Type: application/json
   "description": "Feria 2025 en Sevilla",
   "client": "67f77af2791c8ec9246fadc5"
 }
+
+### Obtener todos los proyectos
+GET http://localhost:3000/api/project
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3Zjc3N2JjZWQ5YTY2NDVkOWUyZmM1MiIsImlhdCI6MTc0NTQwNzUxOSwiZXhwIjoxNzQ1NDExMTE5fQ.iaPYb0a_hEC9zV_bROuvAh2H498XryVWYr_jfK3PEA0
+
+### Obtener proyecto por ID
+GET http://localhost:3000/api/project/68021dfd00b528e97145cb34
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3Zjc3N2JjZWQ5YTY2NDVkOWUyZmM1MiIsImlhdCI6MTc0NTQwNzUxOSwiZXhwIjoxNzQ1NDExMTE5fQ.iaPYb0a_hEC9zV_bROuvAh2H498XryVWYr_jfK3PEA0
+
