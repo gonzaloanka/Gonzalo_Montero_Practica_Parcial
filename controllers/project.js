@@ -118,12 +118,45 @@ const getProjectById = async (req, res) => {
   }
 };
 
+const deleteProject = async (req, res) => {
+  const { id } = req.params;
+  const soft = req.query.soft !== 'false';
+  const user = req.user;
+
+  try {
+    const project = await Project.findOne({
+      _id: id,
+      $or: [
+        { createdBy: user._id },
+        { company: user.company }
+      ]
+    });
+
+    if (!project) {
+      return res.status(404).json({ error: 'Proyecto no encontrado o no autorizado' });
+    }
+
+    if (soft) {
+      project.deleted = true;
+      await project.save();
+      return res.status(200).json({ message: 'Proyecto archivado correctamente (soft delete)' });
+    } else {
+      await project.deleteOne();
+      return res.status(200).json({ message: 'Proyecto eliminado permanentemente (hard delete)' });
+    }
+
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
 
 
 module.exports = {
   createProject,
   updateProject,
   getAllProjects,
-  getProjectById
+  getProjectById,
+  deleteProject
 };
+
 

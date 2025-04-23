@@ -7,7 +7,7 @@ const { validationResult } = require('express-validator');
 const { updateProject } = require('../controllers/project');
 const { updateProjectValidator } = require('../validators/projectValidator');
 const { getAllProjects, getProjectById } = require('../controllers/project');
-
+const { deleteProject } = require('../controllers/project');
 
 router.post('/',
   authMiddleware,
@@ -35,5 +35,6 @@ router.put('/:id',
 router.get('/', authMiddleware, getAllProjects);
 router.get('/:id', authMiddleware, getProjectById);
 
+router.delete('/:id', authMiddleware, deleteProject);
 
 module.exports = router;
