@@ -6,4 +6,14 @@ const projectValidator = [
   check('client', 'Debe especificarse un ID de cliente válido').isMongoId()
 ];
 
-module.exports = { projectValidator };
+const updateProjectValidator = [
+  check('name').optional().notEmpty().withMessage('El nombre no puede estar vacío'),
+  check('description').optional().isString(),
+  check('client').optional().isMongoId().withMessage('Client ID inválido')
+];
+
+module.exports = {
+  projectValidator,
+  updateProjectValidator
+};
+

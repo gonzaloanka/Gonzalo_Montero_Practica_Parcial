@@ -132,3 +132,14 @@ Content-Type: application/json
   "description": "Organización y montaje de la feria anual",
   "client": "67f77af2791c8ec9246fadc5"
 }
+
+### Actualizar proyecto existente
+PUT http://localhost:3000/api/project/68021dfd00b528e97145cb34
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3Zjc3N2JjZWQ5YTY2NDVkOWUyZmM1MiIsImlhdCI6MTc0NTQwNzEwMiwiZXhwIjoxNzQ1NDEwNzAyfQ.Iy75ynjdksmTLkzXF59jvakFqEFD2vjD2-8AQ-QSHMM
+Content-Type: application/json
+
+{
+  "name": "Proyecto Feria (actualizado)",
+  "description": "Feria 2025 en Sevilla",
+  "client": "67f77af2791c8ec9246fadc5"
+}

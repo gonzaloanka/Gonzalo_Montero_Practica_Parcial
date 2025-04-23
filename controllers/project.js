@@ -30,5 +30,54 @@ const createProject = async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 };
+const updateProject = async (req, res) => {
+  const { id } = req.params;
+  const { name, description, client } = req.body;
+  const user = req.user;
 
-module.exports = { createProject };
+  try {
+    const project = await Project.findOne({
+      _id: id,
+      $or: [
+        { createdBy: user._id },
+        { company: user.company }
+      ]
+    });
+
+    if (!project) {
+      return res.status(404).json({ error: 'Proyecto no encontrado o no autorizado' });
+    }
+
+    if (name && name !== project.name) {
+      const existing = await Project.findOne({
+        name,
+        _id: { $ne: id },
+        $or: [
+          { createdBy: user._id },
+          { company: user.company }
+        ]
+      });
+
+      if (existing) {
+        return res.status(409).json({ error: 'Ya existe otro proyecto con ese nombre' });
+      }
+
+      project.name = name;
+    }
+
+    if (description !== undefined) project.description = description;
+    if (client !== undefined) project.client = client;
+
+    await project.save();
+    res.status(200).json(project);
+
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+
+
+module.exports = {
+  createProject,
+  updateProject
+};
