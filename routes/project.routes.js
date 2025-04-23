@@ -8,6 +8,8 @@ const { updateProject } = require('../controllers/project');
 const { updateProjectValidator } = require('../validators/projectValidator');
 const { getAllProjects, getProjectById } = require('../controllers/project');
 const { deleteProject } = require('../controllers/project');
+const { getArchivedProjects, recoverProject } = require('../controllers/project');
+
 
 router.post('/',
   authMiddleware,
@@ -33,8 +35,12 @@ router.put('/:id',
 );
 
 router.get('/', authMiddleware, getAllProjects);
-router.get('/:id', authMiddleware, getProjectById);
 
 router.delete('/:id', authMiddleware, deleteProject);
+
+router.get('/archived', authMiddleware, getArchivedProjects);
+router.patch('/recover/:id', authMiddleware, recoverProject);
+
+router.get('/:id', authMiddleware, getProjectById);
 
 module.exports = router;

@@ -150,13 +150,61 @@ const deleteProject = async (req, res) => {
   }
 };
 
+const getArchivedProjects = async (req, res) => {
+  const user = req.user;
+
+  try {
+    const archived = await Project.find({
+      deleted: true,
+      $or: [
+        { createdBy: user._id },
+        { company: user.company }
+      ]
+    }).populate('client');
+
+    res.status(200).json(archived);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+
+const recoverProject = async (req, res) => {
+  const { id } = req.params;
+  const user = req.user;
+
+  try {
+    const project = await Project.findOne({
+      _id: id,
+      deleted: true,
+      $or: [
+        { createdBy: user._id },
+        { company: user.company }
+      ]
+    });
+
+    if (!project) {
+      return res.status(404).json({ error: 'Proyecto no encontrado o no archivado' });
+    }
+
+    project.deleted = false;
+    await project.save();
+
+    res.status(200).json({ message: 'Proyecto recuperado correctamente' });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+
+
 
 module.exports = {
   createProject,
   updateProject,
   getAllProjects,
   getProjectById,
-  deleteProject
+  deleteProject,
+  getArchivedProjects,
+  recoverProject
 };
 
 
