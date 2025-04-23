@@ -9,7 +9,7 @@ Content-Type: application/json
 
 ### Validar email (Paso 2)
 PUT http://localhost:3000/api/user/validate
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3Zjc3N2JjZWQ5YTY2NDVkOWUyZmM1MiIsImlhdCI6MTc0NDI3MTI5MiwiZXhwIjoxNzQ0Mjc0ODkyfQ.pSMKDAj8NwZitIPv1zB7gSHiFpZGNIoFmSwlBigXUHE
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MDhlZmEzNDUwNzVjOWU1MDE5MDYwMyIsImlhdCI6MTc0NTQxNjA5OSwiZXhwIjoxNzQ1NDE5Njk5fQ.1EDix7suB3WXjXdAq0MVm9BLe4OCvJUMRZLumRtHWW8
 Content-Type: application/json
 
 {
@@ -136,7 +136,7 @@ Content-Type: application/json
 
 ### Actualizar proyecto existente
 PUT http://localhost:3000/api/project/68021dfd00b528e97145cb34
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3Zjc3N2JjZWQ5YTY2NDVkOWUyZmM1MiIsImlhdCI6MTc0NTQwNzEwMiwiZXhwIjoxNzQ1NDEwNzAyfQ.Iy75ynjdksmTLkzXF59jvakFqEFD2vjD2-8AQ-QSHMM
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3Zjc3N2JjZWQ5YTY2NDVkOWUyZmM1MiIsImlhdCI6MTc0NTQxNzU4OSwiZXhwIjoxNzQ1NDIxMTg5fQ.r4221JNz5WmYFlq6J8dwp6ACSv-saRjVLGrJd2rORj4
 Content-Type: application/json
 
 {
@@ -147,7 +147,7 @@ Content-Type: application/json
 
 ### Obtener todos los proyectos
 GET http://localhost:3000/api/project
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3Zjc3N2JjZWQ5YTY2NDVkOWUyZmM1MiIsImlhdCI6MTc0NTQwNzUxOSwiZXhwIjoxNzQ1NDExMTE5fQ.iaPYb0a_hEC9zV_bROuvAh2H498XryVWYr_jfK3PEA0
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3Zjc3N2JjZWQ5YTY2NDVkOWUyZmM1MiIsImlhdCI6MTc0NTQxNzU4OSwiZXhwIjoxNzQ1NDIxMTg5fQ.r4221JNz5WmYFlq6J8dwp6ACSv-saRjVLGrJd2rORj4
 
 ### Obtener proyecto por ID
 GET http://localhost:3000/api/project/68021dfd00b528e97145cb34

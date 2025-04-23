@@ -106,6 +106,59 @@ const options = {
               format: 'binary'
             }
           }
+        },
+        Client: {
+          type: 'object',
+          required: ['name'],
+          properties: {
+            name: {
+              type: 'string',
+              example: 'Cliente Ejemplo S.L.'
+            },
+            email: {
+              type: 'string',
+              example: 'cliente@empresa.com'
+            },
+            phone: {
+              type: 'string',
+              example: '666777888'
+            },
+            address: {
+              type: 'string',
+              example: 'Calle del Cliente 123'
+            }
+          }
+        },
+        Project: {
+          type: 'object',
+          required: ['name', 'description', 'client'],
+          properties: {
+            name: {
+              type: 'string',
+              example: 'Proyecto Feria'
+            },
+            description: {
+              type: 'string',
+              example: 'Organización de evento en la Feria de Abril'
+            },
+            client: {
+              type: 'string',
+              example: '60f7cbb8c2a4f10017486abc'
+            }
+          }
+        },
+        UpdateProject: {
+          type: 'object',
+          properties: {
+            name: {
+              type: 'string',
+              example: 'Proyecto Feria (actualizado)'
+            },
+            description: {
+              type: 'string',
+              example: 'Descripción nueva del proyecto'
+            }
+          }
         }
       }
     }
@@ -120,4 +173,3 @@ const setupSwagger = (app) => {
 };
 
 module.exports = setupSwagger;
-

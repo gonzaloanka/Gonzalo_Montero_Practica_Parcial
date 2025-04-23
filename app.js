@@ -20,6 +20,7 @@ connectDB();
 const PORT = process.env.PORT || 3000;
 const server = app.listen(PORT, () => {
   console.log(`Servidor corriendo en puerto ${PORT}`);
+  console.log(`Documentación Swagger disponible en http://localhost:${PORT}/api-docs`);
 });
 
 module.exports = { app, server };
