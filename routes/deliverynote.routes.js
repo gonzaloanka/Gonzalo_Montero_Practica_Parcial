@@ -5,7 +5,7 @@ const { createDeliveryNote } = require('../controllers/deliveryNote');
 const { validationResult } = require('express-validator');
 const { deliveryNoteValidator } = require('../validators/deliveryNoteValidator');
 const { getAllDeliveryNotes } = require('../controllers/deliveryNote');
-
+const { getDeliveryNoteById } = require('../controllers/deliveryNote');
 
 router.post('/',
   authMiddleware,
@@ -20,6 +20,9 @@ router.post('/',
 
 
 router.get('/', authMiddleware, getAllDeliveryNotes);
+
+
+router.get('/:id', authMiddleware, getDeliveryNoteById);
 
 
 module.exports = router;

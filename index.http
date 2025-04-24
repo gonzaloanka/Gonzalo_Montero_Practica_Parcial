@@ -1,4 +1,4 @@
-@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MDllYTE0OWQ3N2UxZTBiMjMyNmIwYSIsImlhdCI6MTc0NTQ4MTU4NCwiZXhwIjoxNzQ1NDg1MTg0fQ.Qaz6cSQbYCEGpmrmEcQtUSsLjrrsTp56btLePWo-8eI
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MDllYTE0OWQ3N2UxZTBiMjMyNmIwYSIsImlhdCI6MTc0NTQ4MjI5NSwiZXhwIjoxNzQ1NDg1ODk1fQ.MQha_6WfDtSl52e8pxpUzf8Jzfk1KbSHBmOdiHYSFuA
 
 
 ### Registro (paso 1)
@@ -12,7 +12,7 @@ Content-Type: application/json
 
 ### Validar email (Paso 2)
 PUT http://localhost:3000/api/user/validate
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MDllYTE0OWQ3N2UxZTBiMjMyNmIwYSIsImlhdCI6MTc0NTQ4MDIxMiwiZXhwIjoxNzQ1NDgzODEyfQ.EOuFo7381HP7Icqicyp8bYZdLKT7vb2wtf7l26Xh47M
+Authorization: Bearer {{token}}
 Content-Type: application/json
 
 {
@@ -30,7 +30,7 @@ Content-Type: application/json
 
 ### Actualizar datos personales (Paso 4.1)
 PUT http://localhost:3000/api/user/register
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MDllYTE0OWQ3N2UxZTBiMjMyNmIwYSIsImlhdCI6MTc0NTQ4MDI1NCwiZXhwIjoxNzQ1NDgzODU0fQ.swkywXcQg9nKO3QWE6K-7-UgGUYaZ-hHiULzAHr73sY
+Authorization: Bearer {{token}}
 Content-Type: application/json
 
 {
@@ -41,7 +41,7 @@ Content-Type: application/json
 
 ### Actualizar datos compañía (Paso 4.2)
 PATCH http://localhost:3000/api/user/company
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MDllYTE0OWQ3N2UxZTBiMjMyNmIwYSIsImlhdCI6MTc0NTQ4MDI1NCwiZXhwIjoxNzQ1NDgzODU0fQ.swkywXcQg9nKO3QWE6K-7-UgGUYaZ-hHiULzAHr73sY
+Authorization: Bearer {{token}}
 Content-Type: application/json
 
 {
@@ -54,7 +54,7 @@ Content-Type: application/json
 
 ### Subir logo (Paso 5)
 PATCH http://localhost:3000/api/user/logo
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3ZTdmNGIyMTUxNTQ3OTYzNjgyNWM1ZiIsImlhdCI6MTc0MzQxMzQyNywiZXhwIjoxNzQzNDE3MDI3fQ.gaJDFAaOb9hziegw0baqbeXmPLSEQ0tnKXz-wDPm9PY
+Authorization: Bearer {{token}}
 Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
 
 ------WebKitFormBoundary7MA4YWxkTrZu0gW
@@ -66,19 +66,19 @@ Content-Type: image/png
 
 ### GET user (paso 6.1)
 GET http://localhost:3000/api/user
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3ZTdmNGIyMTUxNTQ3OTYzNjgyNWM1ZiIsImlhdCI6MTc0MzQxNzU2NiwiZXhwIjoxNzQzNDIxMTY2fQ.ms8G0A7AL1l20I-othbqdTjpoDl5P_nI-r2aA8Nue_s
+Authorization: Bearer {{token}}
 
 ### DELETE soft
 DELETE http://localhost:3000/api/user
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3ZTdmNGIyMTUxNTQ3OTYzNjgyNWM1ZiIsImlhdCI6MTc0MzQxNzU2NiwiZXhwIjoxNzQzNDIxMTY2fQ.ms8G0A7AL1l20I-othbqdTjpoDl5P_nI-r2aA8Nue_s
+Authorization: Bearer {{token}}
 
 ### DELETE hard
 DELETE http://localhost:3000/api/user?soft=false
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MDllOTZlOWQ3N2UxZTBiMjMyNmFmZSIsImlhdCI6MTc0NTQ4MDA5MCwiZXhwIjoxNzQ1NDgzNjkwfQ.xHvbg-f_gRSoaT_5xI8xtneCONSHFYNB0eft8GcnnaE
+Authorization: Bearer {{token}}
 
 ### Crear cliente
 POST http://localhost:3000/api/client
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MDllYTE0OWQ3N2UxZTBiMjMyNmIwYSIsImlhdCI6MTc0NTQ4MDI1NCwiZXhwIjoxNzQ1NDgzODU0fQ.swkywXcQg9nKO3QWE6K-7-UgGUYaZ-hHiULzAHr73sY
+Authorization: Bearer {{token}}
 Content-Type: application/json
 
 {
@@ -91,7 +91,7 @@ Content-Type: application/json
 
 ### Actualizar un cliente existente (PUT)
 PUT http://localhost:3000/api/client/67f77af2791c8ec9246fadc5
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3Zjc3N2JjZWQ5YTY2NDVkOWUyZmM1MiIsImlhdCI6MTc0NDI3MzA5OCwiZXhwIjoxNzQ0Mjc2Njk4fQ.vIFiQh5plPtWFUUOH1QHiRAcSXW2UUIvi2BjtYZ3puE
+Authorization: Bearer {{token}}
 Content-Type: application/json
 
 {
@@ -103,32 +103,32 @@ Content-Type: application/json
 
 ### Obtener todos los clientes
 GET http://localhost:3000/api/client
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MDllYTE0OWQ3N2UxZTBiMjMyNmIwYSIsImlhdCI6MTc0NTQ4MDI1NCwiZXhwIjoxNzQ1NDgzODU0fQ.swkywXcQg9nKO3QWE6K-7-UgGUYaZ-hHiULzAHr73sY
+Authorization: Bearer {{token}}
 
 ### Obtener cliente por ID
 GET http://localhost:3000/api/client/67f77af2791c8ec9246fadc5
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3Zjc3N2JjZWQ5YTY2NDVkOWUyZmM1MiIsImlhdCI6MTc0NDk2OTA2NiwiZXhwIjoxNzQ0OTcyNjY2fQ.rH8EFUDcBW_WWPApcNJNl5kJr-hn8svx72lGlxlZZsE
+Authorization: Bearer {{token}}
 
 ### Eliminar cliente (soft delete por defecto)
 DELETE http://localhost:3000/api/client/67f77af2791c8ec9246fadc5
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3Zjc3N2JjZWQ5YTY2NDVkOWUyZmM1MiIsImlhdCI6MTc0NDcxNzg1OSwiZXhwIjoxNzQ0NzIxNDU5fQ.nNDM2bdqPmVwOgfgCr_IsoDGtH_zwU_4S4EiIcxQXOg
+Authorization: Bearer {{token}}
 
 ### Eliminar cliente permanentemente (hard delete)
 DELETE http://localhost:3000/api/client/67f77af2791c8ec9246fadc5?soft=false
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3Zjc3N2JjZWQ5YTY2NDVkOWUyZmM1MiIsImlhdCI6MTc0NDcxNTYxNywiZXhwIjoxNzQ0NzE5MjE3fQ.j-mCjes51yEBYxKfNVx_Qi_8E5MxQUzkGY75KNJIdTg
+Authorization: Bearer {{token}}
 
 
 ### Listar clientes archivados
 GET http://localhost:3000/api/client/archived
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3Zjc3N2JjZWQ5YTY2NDVkOWUyZmM1MiIsImlhdCI6MTc0NDcxODM3MSwiZXhwIjoxNzQ0NzIxOTcxfQ.Ra9I4EQs3zyCKbTrjygTkDsXiYojtLY6F4tX5T83qTo
+Authorization: Bearer {{token}}
 
 ### Recuperar cliente archivado
 PATCH http://localhost:3000/api/client/recover/67f77af2791c8ec9246fadc5
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3Zjc3N2JjZWQ5YTY2NDVkOWUyZmM1MiIsImlhdCI6MTc0NDcxODM3MSwiZXhwIjoxNzQ0NzIxOTcxfQ.Ra9I4EQs3zyCKbTrjygTkDsXiYojtLY6F4tX5T83qTo
+Authorization: Bearer {{token}}
 
 ### Crear proyecto
 POST http://localhost:3000/api/project
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MDllYTE0OWQ3N2UxZTBiMjMyNmIwYSIsImlhdCI6MTc0NTQ4MDI1NCwiZXhwIjoxNzQ1NDgzODU0fQ.swkywXcQg9nKO3QWE6K-7-UgGUYaZ-hHiULzAHr73sY
+Authorization: Bearer {{token}}
 Content-Type: application/json
 
 {
@@ -139,7 +139,7 @@ Content-Type: application/json
 
 ### Actualizar proyecto existente
 PUT http://localhost:3000/api/project/68021dfd00b528e97145cb34
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3Zjc3N2JjZWQ5YTY2NDVkOWUyZmM1MiIsImlhdCI6MTc0NTQxNzU4OSwiZXhwIjoxNzQ1NDIxMTg5fQ.r4221JNz5WmYFlq6J8dwp6ACSv-saRjVLGrJd2rORj4
+Authorization: Bearer {{token}}
 Content-Type: application/json
 
 {
@@ -150,31 +150,31 @@ Content-Type: application/json
 
 ### Obtener todos los proyectos
 GET http://localhost:3000/api/project
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3Zjc3N2JjZWQ5YTY2NDVkOWUyZmM1MiIsImlhdCI6MTc0NTQxNzU4OSwiZXhwIjoxNzQ1NDIxMTg5fQ.r4221JNz5WmYFlq6J8dwp6ACSv-saRjVLGrJd2rORj4
+Authorization: Bearer {{token}}
 
 ### Obtener proyecto por ID
 GET http://localhost:3000/api/project/68021dfd00b528e97145cb34
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3Zjc3N2JjZWQ5YTY2NDVkOWUyZmM1MiIsImlhdCI6MTc0NTQwNzUxOSwiZXhwIjoxNzQ1NDExMTE5fQ.iaPYb0a_hEC9zV_bROuvAh2H498XryVWYr_jfK3PEA0
+Authorization: Bearer {{token}}
 
 ### Archivar proyecto (soft delete por defecto)
 DELETE http://localhost:3000/api/project/68021dfd00b528e97145cb34
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3Zjc3N2JjZWQ5YTY2NDVkOWUyZmM1MiIsImlhdCI6MTc0NTQwODczOCwiZXhwIjoxNzQ1NDEyMzM4fQ.o77ZFQ1iAayB98xesIRMBJPzKXT4wTjdcX88peK9cH8
+Authorization: Bearer {{token}}
 
 ### Eliminar proyecto (hard delete)
 DELETE http://localhost:3000/api/project/68021dfd00b528e97145cb34?soft=false
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3Zjc3N2JjZWQ5YTY2NDVkOWUyZmM1MiIsImlhdCI6MTc0NTQwODczOCwiZXhwIjoxNzQ1NDEyMzM4fQ.o77ZFQ1iAayB98xesIRMBJPzKXT4wTjdcX88peK9cH8
+Authorization: Bearer {{token}}
 
 ### Obtener proyectos archivados
 GET http://localhost:3000/api/project/archived
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3Zjc3N2JjZWQ5YTY2NDVkOWUyZmM1MiIsImlhdCI6MTc0NTQxMjc4MywiZXhwIjoxNzQ1NDE2MzgzfQ.vGrW_CoHNHDk4C5u2RqqmoF2eFYhNC_dLAjV7Vi3mZ4
+Authorization: Bearer {{token}}
 
 ### Recuperar proyecto archivado
 PATCH http://localhost:3000/api/project/recover/68021dfd00b528e97145cb34
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3Zjc3N2JjZWQ5YTY2NDVkOWUyZmM1MiIsImlhdCI6MTc0NTQxMjc4MywiZXhwIjoxNzQ1NDE2MzgzfQ.vGrW_CoHNHDk4C5u2RqqmoF2eFYhNC_dLAjV7Vi3mZ4
+Authorization: Bearer {{token}}
 
 ### Crear albarán (simple o múltiple)
 POST http://localhost:3000/api/deliverynote
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MDllYTE0OWQ3N2UxZTBiMjMyNmIwYSIsImlhdCI6MTc0NTQ4MDc3MywiZXhwIjoxNzQ1NDg0MzczfQ.u4CX-ObKxCx2xZiIx2z-gIUuEwqa8BzfNCVWG2RqoPI
+Authorization: Bearer {{token}}
 Content-Type: application/json
 
 {
@@ -198,4 +198,8 @@ Content-Type: application/json
 
 ### Listar todos los albaranes
 GET http://localhost:3000/api/deliverynote
+Authorization: Bearer {{token}}
+
+### Mostrar albarán por ID
+GET http://localhost:3000/api/deliverynote/6809ecb2eafd31f8779aab5c
 Authorization: Bearer {{token}}

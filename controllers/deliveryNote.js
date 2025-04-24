@@ -42,7 +42,43 @@ const getAllDeliveryNotes = async (req, res) => {
     }
   };
 
+  const getDeliveryNoteById = async (req, res) => {
+    const { id } = req.params;
+    const user = req.user;
+  
+    try {
+      const note = await DeliveryNote.findOne({
+        _id: id,
+        $or: [
+          { user: user._id },
+          { company: user.company }
+        ]
+      })
+        .populate({
+          path: 'user',
+          select: 'personal company email'
+        })
+        .populate({
+          path: 'project',
+          populate: {
+            path: 'client',
+            select: 'name email phone address company'
+          }
+        });
+  
+      if (!note) {
+        return res.status(404).json({ error: 'Albarán no encontrado o no autorizado' });
+      }
+  
+      res.status(200).json(note);
+    } catch (error) {
+      res.status(500).json({ error: error.message });
+    }
+  };
+  
+
 module.exports = {
   createDeliveryNote,
-  getAllDeliveryNotes
+  getAllDeliveryNotes,
+  getDeliveryNoteById
 };
