@@ -18,6 +18,31 @@ const createDeliveryNote = async (req, res) => {
   }
 };
 
+const getAllDeliveryNotes = async (req, res) => {
+    try {
+      const user = req.user;
+      const deliveryNotes = await DeliveryNote.find({
+        deleted: false,
+        $or: [
+          { user: user._id },
+          { company: user.company }
+        ]
+      })
+        .populate({
+          path: 'project',
+          populate: {
+            path: 'client',
+          }
+        })
+        .populate('user');
+  
+      res.status(200).json(deliveryNotes);
+    } catch (error) {
+      res.status(500).json({ error: error.message });
+    }
+  };
+
 module.exports = {
-  createDeliveryNote
+  createDeliveryNote,
+  getAllDeliveryNotes
 };

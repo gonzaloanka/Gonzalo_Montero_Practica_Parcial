@@ -1,3 +1,6 @@
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MDllYTE0OWQ3N2UxZTBiMjMyNmIwYSIsImlhdCI6MTc0NTQ4MTU4NCwiZXhwIjoxNzQ1NDg1MTg0fQ.Qaz6cSQbYCEGpmrmEcQtUSsLjrrsTp56btLePWo-8eI
+
+
 ### Registro (paso 1)
 POST http://localhost:3000/api/user/register
 Content-Type: application/json
@@ -192,3 +195,7 @@ Content-Type: application/json
     }
   ]
 }
+
+### Listar todos los albaranes
+GET http://localhost:3000/api/deliverynote
+Authorization: Bearer {{token}}
