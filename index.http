@@ -9,11 +9,11 @@ Content-Type: application/json
 
 ### Validar email (Paso 2)
 PUT http://localhost:3000/api/user/validate
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MDhlZmEzNDUwNzVjOWU1MDE5MDYwMyIsImlhdCI6MTc0NTQxNjA5OSwiZXhwIjoxNzQ1NDE5Njk5fQ.1EDix7suB3WXjXdAq0MVm9BLe4OCvJUMRZLumRtHWW8
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MDllYTE0OWQ3N2UxZTBiMjMyNmIwYSIsImlhdCI6MTc0NTQ4MDIxMiwiZXhwIjoxNzQ1NDgzODEyfQ.EOuFo7381HP7Icqicyp8bYZdLKT7vb2wtf7l26Xh47M
 Content-Type: application/json
 
 {
-  "code": "224511"
+  "code": "930776"
 }
 
 ### Login (Paso 3)
@@ -27,7 +27,7 @@ Content-Type: application/json
 
 ### Actualizar datos personales (Paso 4.1)
 PUT http://localhost:3000/api/user/register
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3Zjc3N2JjZWQ5YTY2NDVkOWUyZmM1MiIsImlhdCI6MTc0NDI3MTM3OSwiZXhwIjoxNzQ0Mjc0OTc5fQ.iWGPu6Bh9XpAsGhi16bG6HW1h-IhQwimZ9q6Zyyd1No
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MDllYTE0OWQ3N2UxZTBiMjMyNmIwYSIsImlhdCI6MTc0NTQ4MDI1NCwiZXhwIjoxNzQ1NDgzODU0fQ.swkywXcQg9nKO3QWE6K-7-UgGUYaZ-hHiULzAHr73sY
 Content-Type: application/json
 
 {
@@ -38,7 +38,7 @@ Content-Type: application/json
 
 ### Actualizar datos compañía (Paso 4.2)
 PATCH http://localhost:3000/api/user/company
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3Zjc3N2JjZWQ5YTY2NDVkOWUyZmM1MiIsImlhdCI6MTc0NDI3MTM3OSwiZXhwIjoxNzQ0Mjc0OTc5fQ.iWGPu6Bh9XpAsGhi16bG6HW1h-IhQwimZ9q6Zyyd1No
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MDllYTE0OWQ3N2UxZTBiMjMyNmIwYSIsImlhdCI6MTc0NTQ4MDI1NCwiZXhwIjoxNzQ1NDgzODU0fQ.swkywXcQg9nKO3QWE6K-7-UgGUYaZ-hHiULzAHr73sY
 Content-Type: application/json
 
 {
@@ -71,11 +71,11 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3ZTdmNGIyM
 
 ### DELETE hard
 DELETE http://localhost:3000/api/user?soft=false
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3ZTdmNGIyMTUxNTQ3OTYzNjgyNWM1ZiIsImlhdCI6MTc0MzQxNzU2NiwiZXhwIjoxNzQzNDIxMTY2fQ.ms8G0A7AL1l20I-othbqdTjpoDl5P_nI-r2aA8Nue_s
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MDllOTZlOWQ3N2UxZTBiMjMyNmFmZSIsImlhdCI6MTc0NTQ4MDA5MCwiZXhwIjoxNzQ1NDgzNjkwfQ.xHvbg-f_gRSoaT_5xI8xtneCONSHFYNB0eft8GcnnaE
 
 ### Crear cliente
 POST http://localhost:3000/api/client
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3Zjc3N2JjZWQ5YTY2NDVkOWUyZmM1MiIsImlhdCI6MTc0NDI3MjA5MCwiZXhwIjoxNzQ0Mjc1NjkwfQ.pl5tOB06iCVNmPWKynMjGIsTNhMc4jpNgqvVmRfs9T4
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MDllYTE0OWQ3N2UxZTBiMjMyNmIwYSIsImlhdCI6MTc0NTQ4MDI1NCwiZXhwIjoxNzQ1NDgzODU0fQ.swkywXcQg9nKO3QWE6K-7-UgGUYaZ-hHiULzAHr73sY
 Content-Type: application/json
 
 {
@@ -100,7 +100,7 @@ Content-Type: application/json
 
 ### Obtener todos los clientes
 GET http://localhost:3000/api/client
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3Zjc3N2JjZWQ5YTY2NDVkOWUyZmM1MiIsImlhdCI6MTc0NDcxNTYxNywiZXhwIjoxNzQ0NzE5MjE3fQ.j-mCjes51yEBYxKfNVx_Qi_8E5MxQUzkGY75KNJIdTg
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MDllYTE0OWQ3N2UxZTBiMjMyNmIwYSIsImlhdCI6MTc0NTQ4MDI1NCwiZXhwIjoxNzQ1NDgzODU0fQ.swkywXcQg9nKO3QWE6K-7-UgGUYaZ-hHiULzAHr73sY
 
 ### Obtener cliente por ID
 GET http://localhost:3000/api/client/67f77af2791c8ec9246fadc5
@@ -125,13 +125,13 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3Zjc3N2JjZ
 
 ### Crear proyecto
 POST http://localhost:3000/api/project
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3Zjc3N2JjZWQ5YTY2NDVkOWUyZmM1MiIsImlhdCI6MTc0NDk2OTE4OSwiZXhwIjoxNzQ0OTcyNzg5fQ.yIBjHaqoXAxNQ1pO-9ZWJ4YuwrbvbubbElCS1AJpWmg
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MDllYTE0OWQ3N2UxZTBiMjMyNmIwYSIsImlhdCI6MTc0NTQ4MDI1NCwiZXhwIjoxNzQ1NDgzODU0fQ.swkywXcQg9nKO3QWE6K-7-UgGUYaZ-hHiULzAHr73sY
 Content-Type: application/json
 
 {
   "name": "Proyecto Feria",
   "description": "Organización y montaje de la feria anual",
-  "client": "67f77af2791c8ec9246fadc5"
+  "client": "6809ea869d77e1e0b2326b15"
 }
 
 ### Actualizar proyecto existente
@@ -168,3 +168,27 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3Zjc3N2JjZ
 ### Recuperar proyecto archivado
 PATCH http://localhost:3000/api/project/recover/68021dfd00b528e97145cb34
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3Zjc3N2JjZWQ5YTY2NDVkOWUyZmM1MiIsImlhdCI6MTc0NTQxMjc4MywiZXhwIjoxNzQ1NDE2MzgzfQ.vGrW_CoHNHDk4C5u2RqqmoF2eFYhNC_dLAjV7Vi3mZ4
+
+### Crear albarán (simple o múltiple)
+POST http://localhost:3000/api/deliverynote
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MDllYTE0OWQ3N2UxZTBiMjMyNmIwYSIsImlhdCI6MTc0NTQ4MDc3MywiZXhwIjoxNzQ1NDg0MzczfQ.u4CX-ObKxCx2xZiIx2z-gIUuEwqa8BzfNCVWG2RqoPI
+Content-Type: application/json
+
+{
+  "project": "6809eabc9d77e1e0b2326b1b",
+  "type": "hours",
+  "entries": [
+    {
+      "type": "hour",
+      "description": "Montaje inicial",
+      "quantity": 5,
+      "unit": "hours"
+    },
+    {
+      "type": "hour",
+      "description": "Operario 2",
+      "quantity": 8,
+      "unit": "hours"
+    }
+  ]
+}

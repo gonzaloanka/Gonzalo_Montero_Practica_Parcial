@@ -14,6 +14,7 @@ app.use(express.json());
 app.use('/api/user', require('./routes/user.routes'));
 app.use('/api/client', require('./routes/client.routes'));
 app.use('/api/project', require('./routes/project.routes'));
+app.use('/api/deliverynote', require('./routes/deliverynote.routes'));
 
 connectDB();
 
