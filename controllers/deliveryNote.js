@@ -1,4 +1,6 @@
 const DeliveryNote = require('../models/DeliveryNote');
+const path = require('path');
+const { generateDeliveryNotePdf } = require('../utils/pdfGenerator');
 
 const createDeliveryNote = async (req, res) => {
   const { project, type, entries } = req.body;
@@ -75,10 +77,38 @@ const getAllDeliveryNotes = async (req, res) => {
       res.status(500).json({ error: error.message });
     }
   };
+
+const getDeliveryNotePdf = async (req, res) => {
+  const user = req.user;
+  const { id } = req.params;
+
+  try {
+    const deliveryNote = await DeliveryNote.findOne({
+      _id: id,
+      deleted: false,
+      $or: [
+        { user: user._id },
+        { company: user.company }
+      ]
+    }).populate('project').populate('user').populate('project.client');
+
+    if (!deliveryNote) {
+      return res.status(404).json({ error: 'Albarán no encontrado o no autorizado' });
+    }
+
+    const filePath = path.join(__dirname, `../storage/deliverynotes/albaran-${id}.pdf`);
+    await generateDeliveryNotePdf(deliveryNote, filePath);
+    res.download(filePath);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+
   
 
 module.exports = {
   createDeliveryNote,
   getAllDeliveryNotes,
-  getDeliveryNoteById
+  getDeliveryNoteById,
+  getDeliveryNotePdf
 };
