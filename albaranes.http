@@ -1,0 +1,60 @@
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MDllYTE0OWQ3N2UxZTBiMjMyNmIwYSIsImlhdCI6MTc0NTg3MTI0NCwiZXhwIjoxNzQ1ODc0ODQ0fQ.zQ4yycy-074oAkOxMaG1kq0Fc7__EwqCv38LCkrqwZ0
+
+### Crear albarán (simple o múltiple)
+POST http://localhost:3000/api/deliverynote
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "project": "6809eabc9d77e1e0b2326b1b",
+  "type": "hours",
+  "entries": [
+    {
+      "type": "hour",
+      "description": "Montaje inicial",
+      "quantity": 5,
+      "unit": "hours"
+    },
+    {
+      "type": "hour",
+      "description": "Operario 2",
+      "quantity": 8,
+      "unit": "hours"
+    }
+  ]
+}
+
+### Listar todos los albaranes
+GET http://localhost:3000/api/deliverynote
+Authorization: Bearer {{token}}
+
+### Mostrar albarán por ID
+GET http://localhost:3000/api/deliverynote/6809ecb2eafd31f8779aab5c
+Authorization: Bearer {{token}}
+
+### Crear albarán (simple o múltiple)
+POST http://localhost:3000/api/deliverynote
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "project": "6809eabc9d77e1e0b2326b1b",
+  "type": "hours",
+  "entries": [
+    {
+      "description": "Montaje inicial",
+      "quantity": 5,
+      "unit": "hours"
+    },
+    {
+      "description": "Operario 2",
+      "quantity": 8,
+      "unit": "hours"
+    }
+  ]
+}
+
+### Obtener albarán en PDF
+GET http://localhost:3000/api/deliverynote/pdf/6809ecb2eafd31f8779aab5c
+Authorization: Bearer {{token}}
+Accept: application/pdf

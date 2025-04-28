@@ -1,0 +1,79 @@
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MDllYTE0OWQ3N2UxZTBiMjMyNmIwYSIsImlhdCI6MTc0NTg3MTI0NCwiZXhwIjoxNzQ1ODc0ODQ0fQ.zQ4yycy-074oAkOxMaG1kq0Fc7__EwqCv38LCkrqwZ0
+
+
+### Registro (paso 1)
+POST http://localhost:3000/api/user/register
+Content-Type: application/json
+
+{
+  "email": "gonzaloo@mail.com",
+  "password": "12345678"
+}
+
+### Validar email (Paso 2)
+PUT http://localhost:3000/api/user/validate
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "code": "930776"
+}
+
+### Login (Paso 3)
+POST http://localhost:3000/api/user/login
+Content-Type: application/json
+
+{
+  "email": "gonzaloo@mail.com",
+  "password": "12345678"
+}
+
+### Actualizar datos personales (Paso 4.1)
+PUT http://localhost:3000/api/user/register
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "name": "Gonzalo",
+  "lastname": "Montero Sierra",
+  "nif": "12345678A"
+}
+
+### Actualizar datos compañía (Paso 4.2)
+PATCH http://localhost:3000/api/user/company
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "name": "Mi Empresa S.L.",
+  "cif": "B12345678",
+  "address": "Calle Empresa 42",
+  "isFreelancer": false
+}
+
+
+### Subir logo (Paso 5)
+PATCH http://localhost:3000/api/user/logo
+Authorization: Bearer {{token}}
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
+
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="logo"; filename="logo.png"
+Content-Type: image/png
+
+< ./storage/logo/logo.png
+------WebKitFormBoundary7MA4YWxkTrZu0gW--
+
+### GET user (paso 6.1)
+GET http://localhost:3000/api/user
+Authorization: Bearer {{token}}
+
+### DELETE soft
+DELETE http://localhost:3000/api/user
+Authorization: Bearer {{token}}
+
+### DELETE hard
+DELETE http://localhost:3000/api/user?soft=false
+Authorization: Bearer {{token}}
+
+

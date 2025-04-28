@@ -1,0 +1,51 @@
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MDllYTE0OWQ3N2UxZTBiMjMyNmIwYSIsImlhdCI6MTc0NTg3MTI0NCwiZXhwIjoxNzQ1ODc0ODQ0fQ.zQ4yycy-074oAkOxMaG1kq0Fc7__EwqCv38LCkrqwZ0
+
+### Crear cliente
+POST http://localhost:3000/api/client
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "name": "Mi Empresa S.L.",
+  "email": "gonzalooms@mail.com",
+  "phone": "666777888",
+  "address": "Calle Empresa 42"
+}
+
+
+### Actualizar un cliente existente (PUT)
+PUT http://localhost:3000/api/client/67f77af2791c8ec9246fadc5
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "name": "Cliente Actualizado S.L.",
+  "email": "clienteactualizado@mail.com",
+  "phone": "999888777",
+  "address": "Calle Nueva 99"
+}
+
+### Obtener todos los clientes
+GET http://localhost:3000/api/client
+Authorization: Bearer {{token}}
+
+### Obtener cliente por ID
+GET http://localhost:3000/api/client/67f77af2791c8ec9246fadc5
+Authorization: Bearer {{token}}
+
+### Eliminar cliente (soft delete por defecto)
+DELETE http://localhost:3000/api/client/67f77af2791c8ec9246fadc5
+Authorization: Bearer {{token}}
+
+### Eliminar cliente permanentemente (hard delete)
+DELETE http://localhost:3000/api/client/67f77af2791c8ec9246fadc5?soft=false
+Authorization: Bearer {{token}}
+
+
+### Listar clientes archivados
+GET http://localhost:3000/api/client/archived
+Authorization: Bearer {{token}}
+
+### Recuperar cliente archivado
+PATCH http://localhost:3000/api/client/recover/67f77af2791c8ec9246fadc5
+Authorization: Bearer {{token}}

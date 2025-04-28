@@ -1,0 +1,47 @@
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MDllYTE0OWQ3N2UxZTBiMjMyNmIwYSIsImlhdCI6MTc0NTg3MTI0NCwiZXhwIjoxNzQ1ODc0ODQ0fQ.zQ4yycy-074oAkOxMaG1kq0Fc7__EwqCv38LCkrqwZ0
+
+### Crear proyecto
+POST http://localhost:3000/api/project
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "name": "Proyecto Feria",
+  "description": "Organización y montaje de la feria anual",
+  "client": "6809ea869d77e1e0b2326b15"
+}
+
+### Actualizar proyecto existente
+PUT http://localhost:3000/api/project/68021dfd00b528e97145cb34
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "name": "Proyecto Feria (actualizado)",
+  "description": "Feria 2025 en Sevilla",
+  "client": "67f77af2791c8ec9246fadc5"
+}
+
+### Obtener todos los proyectos
+GET http://localhost:3000/api/project
+Authorization: Bearer {{token}}
+
+### Obtener proyecto por ID
+GET http://localhost:3000/api/project/68021dfd00b528e97145cb34
+Authorization: Bearer {{token}}
+
+### Archivar proyecto (soft delete por defecto)
+DELETE http://localhost:3000/api/project/68021dfd00b528e97145cb34
+Authorization: Bearer {{token}}
+
+### Eliminar proyecto (hard delete)
+DELETE http://localhost:3000/api/project/68021dfd00b528e97145cb34?soft=false
+Authorization: Bearer {{token}}
+
+### Obtener proyectos archivados
+GET http://localhost:3000/api/project/archived
+Authorization: Bearer {{token}}
+
+### Recuperar proyecto archivado
+PATCH http://localhost:3000/api/project/recover/68021dfd00b528e97145cb34
+Authorization: Bearer {{token}}
