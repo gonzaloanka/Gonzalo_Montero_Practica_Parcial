@@ -3,7 +3,15 @@ const router = express.Router();
 const authMiddleware = require('../middleware/authMiddleware');
 const { validationResult } = require('express-validator');
 const { deliveryNoteValidator } = require('../validators/deliveryNoteValidator');
-const { createDeliveryNote, getAllDeliveryNotes, getDeliveryNoteById, getDeliveryNotePdf } = require('../controllers/deliveryNote');
+const upload = require('../middleware/storageMiddleware');
+
+const {
+  createDeliveryNote,
+  getAllDeliveryNotes,
+  getDeliveryNoteById,
+  getDeliveryNotePdf,
+  signDeliveryNote
+} = require('../controllers/deliveryNote');
 
 router.post('/',
   authMiddleware,
@@ -21,5 +29,7 @@ router.get('/', authMiddleware, getAllDeliveryNotes);
 router.get('/:id', authMiddleware, getDeliveryNoteById);
 
 router.get('/pdf/:id', authMiddleware, getDeliveryNotePdf);
+
+router.patch('/sign/:id', authMiddleware, upload.single('signature'), signDeliveryNote);
 
 module.exports = router;

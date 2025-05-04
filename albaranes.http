@@ -1,4 +1,4 @@
-@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MDllYTE0OWQ3N2UxZTBiMjMyNmIwYSIsImlhdCI6MTc0NTkxNjk0OCwiZXhwIjoxNzQ1OTIwNTQ4fQ.Q3VNFmXNLdta6h4xvDXB81wwUxQ9i3qqgzc6cTLJVco
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MDllYTE0OWQ3N2UxZTBiMjMyNmIwYSIsImlhdCI6MTc0NjM3MjcyMCwiZXhwIjoxNzQ2Mzc2MzIwfQ.GPxGIrd2v3wTGW-3CT2WRz0UFBUGQjEJjNWWbEYBwto
 
 ### Crear albarán (simple o múltiple)
 POST http://localhost:3000/api/deliverynote
@@ -58,3 +58,15 @@ Content-Type: application/json
 GET http://localhost:3000/api/deliverynote/pdf/6809ecb2eafd31f8779aab5c
 Authorization: Bearer {{token}}
 Accept: application/pdf
+
+### Firmar albarán (subir imagen a IPFS)
+PATCH http://localhost:3000/api/deliverynote/sign/6809ecb2eafd31f8779aab5c
+Authorization: Bearer {{token}}
+Content-Type: multipart/form-data; boundary=MyBoundary
+
+--MyBoundary
+Content-Disposition: form-data; name="signature"; filename="firma.png"
+Content-Type: image/png
+
+< ./firma.png
+--MyBoundary--

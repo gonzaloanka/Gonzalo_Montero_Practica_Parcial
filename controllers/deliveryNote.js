@@ -1,6 +1,7 @@
 const DeliveryNote = require('../models/DeliveryNote');
 const path = require('path');
 const { generateDeliveryNotePdf } = require('../utils/pdfGenerator');
+const { uploadToIPFS } = require('../utils/pinata');
 
 const createDeliveryNote = async (req, res) => {
   const { project, type, entries } = req.body;
@@ -104,11 +105,49 @@ const getDeliveryNotePdf = async (req, res) => {
   }
 };
 
-  
+
+const signDeliveryNote = async (req, res) => {
+  const { id } = req.params;
+  const user = req.user;
+
+  try {
+    const deliveryNote = await DeliveryNote.findOne({
+      _id: id,
+      deleted: false,
+      signed: false,
+      $or: [
+        { user: user._id },
+        { company: user.company }
+      ]
+    });
+
+    if (!deliveryNote) {
+      return res.status(404).json({ error: 'Albarán no encontrado o no autorizado o ya firmado' });
+    }
+
+    if (!req.file) {
+      return res.status(400).json({ error: 'No se ha subido ninguna imagen de firma' });
+    }
+
+    const filePath = req.file.path;
+    const ipfsHash = await uploadToIPFS(filePath);
+    const ipfsUrl = `https://gateway.pinata.cloud/ipfs/${ipfsHash}`;
+
+    deliveryNote.signed = true;
+    deliveryNote.signatureUrl = ipfsUrl;
+    await deliveryNote.save();
+
+    res.status(200).json({ message: 'Albarán firmado correctamente', ipfsUrl });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+
 
 module.exports = {
   createDeliveryNote,
   getAllDeliveryNotes,
   getDeliveryNoteById,
-  getDeliveryNotePdf
+  getDeliveryNotePdf,
+  signDeliveryNote
 };
