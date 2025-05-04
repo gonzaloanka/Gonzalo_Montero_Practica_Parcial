@@ -1,4 +1,4 @@
-@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MDllYTE0OWQ3N2UxZTBiMjMyNmIwYSIsImlhdCI6MTc0NTg3MTI0NCwiZXhwIjoxNzQ1ODc0ODQ0fQ.zQ4yycy-074oAkOxMaG1kq0Fc7__EwqCv38LCkrqwZ0
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MDllYTE0OWQ3N2UxZTBiMjMyNmIwYSIsImlhdCI6MTc0NTkxNjk0OCwiZXhwIjoxNzQ1OTIwNTQ4fQ.Q3VNFmXNLdta6h4xvDXB81wwUxQ9i3qqgzc6cTLJVco
 
 ### Crear albarán (simple o múltiple)
 POST http://localhost:3000/api/deliverynote
