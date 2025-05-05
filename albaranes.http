@@ -1,4 +1,4 @@
-@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MThiYWRhYmMwNzkyNjdiZjU0OTc5ZCIsImlhdCI6MTc0NjQ1OTI2MCwiZXhwIjoxNzQ2NDYyODYwfQ.aKgDd3YCfBsi4L8LpfdcXkJMRUtNPF3g7jWSFxFcf-s
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MThiYWRhYmMwNzkyNjdiZjU0OTc5ZCIsImlhdCI6MTc0NjQ2MTQ4MCwiZXhwIjoxNzQ2NDY1MDgwfQ.KdNRL3fbyXKn30HfOnduBSzK6vhwmteJpjQn-rJl5Kw
 
 ### Crear albarán (simple o múltiple)
 POST http://localhost:3000/api/deliverynote
@@ -70,3 +70,8 @@ Content-Type: image/png
 
 < ./firma.png
 --MyBoundary--
+
+### Paso 7: Borrar albarán (solo si no está firmado)
+DELETE http://localhost:3000/api/deliverynote/6818e33aaf6c43da6e0c4433
+Authorization: Bearer {{token}}
+

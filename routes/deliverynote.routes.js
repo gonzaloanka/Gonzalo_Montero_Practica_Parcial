@@ -10,7 +10,8 @@ const {
   getAllDeliveryNotes,
   getDeliveryNoteById,
   getDeliveryNotePdf,
-  signDeliveryNote
+  signDeliveryNote,
+  deleteDeliveryNote
 } = require('../controllers/deliveryNote');
 
 router.post('/',
@@ -31,5 +32,8 @@ router.get('/:id', authMiddleware, getDeliveryNoteById);
 router.get('/pdf/:id', authMiddleware, getDeliveryNotePdf);
 
 router.patch('/sign/:id', authMiddleware, upload.single('signature'), signDeliveryNote);
+
+router.delete('/:id', authMiddleware, deleteDeliveryNote);
+
 
 module.exports = router;
