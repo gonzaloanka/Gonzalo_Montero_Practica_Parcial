@@ -1,20 +1,22 @@
 const axios = require('axios');
 const FormData = require('form-data');
 const fs = require('fs');
-const path = require('path');
 require('dotenv').config();
 
 const uploadToIPFS = async (filePath) => {
   const url = `https://api.pinata.cloud/pinning/pinFileToIPFS`;
   const data = new FormData();
 
-  data.append('file', fs.createReadStream(filePath));
+  data.append('file', fs.createReadStream(filePath), {
+    filename: 'firma.png',
+    contentType: 'image/png'
+  });
 
   try {
     const res = await axios.post(url, data, {
       maxBodyLength: 'Infinity',
       headers: {
-        'Content-Type': `multipart/form-data; boundary=${data._boundary}`,
+        ...data.getHeaders(),
         Authorization: `Bearer ${process.env.PINATA_JWT}`,
       },
     });

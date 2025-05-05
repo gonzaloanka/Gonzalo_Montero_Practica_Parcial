@@ -1,4 +1,4 @@
-@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MDllYTE0OWQ3N2UxZTBiMjMyNmIwYSIsImlhdCI6MTc0NTg3MTI0NCwiZXhwIjoxNzQ1ODc0ODQ0fQ.zQ4yycy-074oAkOxMaG1kq0Fc7__EwqCv38LCkrqwZ0
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MThiYWRhYmMwNzkyNjdiZjU0OTc5ZCIsImlhdCI6MTc0NjQ1MTE2MiwiZXhwIjoxNzQ2NDU0NzYyfQ.GizWxcyh6nU2OJLzRP4OEZvm2ZeTCcJyrr4mNR97sDo
 
 
 ### Registro (paso 1)
@@ -16,7 +16,7 @@ Authorization: Bearer {{token}}
 Content-Type: application/json
 
 {
-  "code": "930776"
+  "code": "734739"
 }
 
 ### Login (Paso 3)

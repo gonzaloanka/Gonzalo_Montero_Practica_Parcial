@@ -10,14 +10,14 @@ const generateDeliveryNotePdf = (deliveryNote, outputPath) => {
     doc.fontSize(16).text('Albarán', { align: 'center' });
     doc.moveDown();
 
-    doc.fontSize(12).text(`Proyecto: ${deliveryNote.project.name}`);
-    doc.text(`Cliente: ${deliveryNote.project.client.name}`);
-    doc.text(`Usuario: ${deliveryNote.user.personal.name} ${deliveryNote.user.personal.lastname}`);
-    doc.text(`Correo: ${deliveryNote.user.email}`);
+    doc.fontSize(12).text(`Proyecto: ${deliveryNote.project?.name || 'Sin nombre'}`);
+    doc.text(`Cliente: ${deliveryNote.project?.client?.name || 'Sin cliente'}`);
+    doc.text(`Usuario: ${deliveryNote.user?.personal?.name || ''} ${deliveryNote.user?.personal?.lastname || ''}`);
+    doc.text(`Correo: ${deliveryNote.user?.email || 'Sin correo'}`);
     doc.moveDown();
 
     doc.text('Entradas:');
-    deliveryNote.entries.forEach((entry, index) => {
+    deliveryNote.entries.forEach((entry) => {
       doc.text(` - [${entry.type}] ${entry.description}: ${entry.quantity} ${entry.unit}`);
     });
 

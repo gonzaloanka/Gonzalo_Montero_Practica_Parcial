@@ -1,4 +1,4 @@
-@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MDllYTE0OWQ3N2UxZTBiMjMyNmIwYSIsImlhdCI6MTc0NjM3MjcyMCwiZXhwIjoxNzQ2Mzc2MzIwfQ.GPxGIrd2v3wTGW-3CT2WRz0UFBUGQjEJjNWWbEYBwto
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MThiYWRhYmMwNzkyNjdiZjU0OTc5ZCIsImlhdCI6MTc0NjQ1OTI2MCwiZXhwIjoxNzQ2NDYyODYwfQ.aKgDd3YCfBsi4L8LpfdcXkJMRUtNPF3g7jWSFxFcf-s
 
 ### Crear albarán (simple o múltiple)
 POST http://localhost:3000/api/deliverynote
@@ -11,13 +11,13 @@ Content-Type: application/json
   "entries": [
     {
       "type": "hour",
-      "description": "Montaje inicial",
+      "description": "Montaje final3",
       "quantity": 5,
       "unit": "hours"
     },
     {
       "type": "hour",
-      "description": "Operario 2",
+      "description": "Operario 4",
       "quantity": 8,
       "unit": "hours"
     }
@@ -42,12 +42,12 @@ Content-Type: application/json
   "type": "hours",
   "entries": [
     {
-      "description": "Montaje inicial",
+      "description": "Montaje final",
       "quantity": 5,
       "unit": "hours"
     },
     {
-      "description": "Operario 2",
+      "description": "Operario 3",
       "quantity": 8,
       "unit": "hours"
     }
@@ -55,12 +55,12 @@ Content-Type: application/json
 }
 
 ### Obtener albarán en PDF
-GET http://localhost:3000/api/deliverynote/pdf/6809ecb2eafd31f8779aab5c
+GET http://localhost:3000/api/deliverynote/pdf/6818bb12bc079267bf5497a3
 Authorization: Bearer {{token}}
 Accept: application/pdf
 
 ### Firmar albarán (subir imagen a IPFS)
-PATCH http://localhost:3000/api/deliverynote/sign/6809ecb2eafd31f8779aab5c
+PATCH http://localhost:3000/api/deliverynote/sign/6818daa3ba267bdc0ec0dfcf
 Authorization: Bearer {{token}}
 Content-Type: multipart/form-data; boundary=MyBoundary
 
